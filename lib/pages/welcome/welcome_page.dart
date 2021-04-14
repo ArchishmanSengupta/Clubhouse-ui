@@ -1,4 +1,6 @@
+import 'package:blackvector/widgets/round_button.dart';
 import 'package:flutter/material.dart';
+import 'package:blackvector/util/style.dart';
 
 class WelcomePage extends StatelessWidget {
   @override
@@ -6,6 +8,7 @@ class WelcomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Container(
+        alignment: Alignment.center,
         padding: const EdgeInsets.only(
           left: 50,
           right: 50,
@@ -18,8 +21,12 @@ class WelcomePage extends StatelessWidget {
           SizedBox(
             height: 40,
           ),
-          Expanded(child:buildContent(),
+          
+          Expanded(
+            child:buildContent(),
+            
           ),
+          buildBottom(),
 
           ],
         )
@@ -37,32 +44,57 @@ class WelcomePage extends StatelessWidget {
 
 
   Widget buildContent(){
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-      Text('We\'re working hard to get Clubhouse ready for launch! While we wrap up the finishing touches, we\'re adding people gradually to make sure nothing breaks :)',
-      style:TextStyle(
-        height: 1.8,
-        fontSize: 15,
-      ),
-      ),
-      SizedBox(
-        height: 40,
-      ),
-      Text('If you don\'t yet have an invite, you can reserve your username now and we\'ll get you on very soon. We are so grateful you\'re here and can\'t wait to have you join! 🙏',
-      style:TextStyle(
-        height: 1.8,
-        fontSize: 15,
-      ),
-      ),
-      SizedBox(
-        height: 40,
-      ),
-      Text('🏠Paul, Rohan & the clubhouse team ', style:TextStyle(
-            fontSize:15,
-      ))
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+        Text('We\'re working hard to get Clubhouse ready for launch! While we wrap up the finishing touches, we\'re adding people gradually to make sure nothing breaks :)',
+        style:TextStyle(
+          height: 1.8,
+          fontSize: 15,
+        ),
+        ),
+        SizedBox(
+          height: 40,
+        ),
+        Text('If you don\'t yet have an invite, you can reserve your username now and we\'ll get you on very soon. We are so grateful you\'re here and can\'t wait to have you join! 🙏',
+        style:TextStyle(
+          height: 1.8,
+          fontSize: 15,
+        ),
+        ),
+        SizedBox(
+          height: 40,
+        ),
+        Text('🏠Paul, Rohan & the clubhouse team ', style:TextStyle(
+              fontSize:15,
+        ))
 
-    ],);
+      ],),
+    );
+  }
+
+  Widget buildBottom(){
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        RoundButton(
+          text: 'Next'
+        ),
+        SizedBox(
+          height: 20,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Have an invite text?',
+            style: TextStyle(
+              color: Style.AccentBlue,
+            ))
+          ]
+        )
+      ],
+    );
   }
 
 }
