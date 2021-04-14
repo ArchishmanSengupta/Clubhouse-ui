@@ -48,7 +48,7 @@ class WelcomePage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-        Text('We\'re working hard to get Clubhouse ready for launch! While we wrap up the finishing touches, we\'re adding people gradually to make sure nothing breaks :)',
+        Text('We\'re working hard to get BlackVector ready for launch! While we wrap up the finishing touches, we\'re adding people gradually to make sure nothing breaks :)',
         style:TextStyle(
           height: 1.8,
           fontSize: 15,
@@ -66,7 +66,7 @@ class WelcomePage extends StatelessWidget {
         SizedBox(
           height: 40,
         ),
-        Text('🏠Paul, Rohan & the clubhouse team ', style:TextStyle(
+        Text('🏠Archie, Harry & the BlackVector team ', style:TextStyle(
               fontSize:15,
         ))
 
@@ -79,7 +79,19 @@ class WelcomePage extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         RoundButton(
-          text: 'Next'
+          color: Style.AccentBlue,
+          onPressed:(){},
+          child: Container(
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text('Get an Username',style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                )),
+              ],
+            ),
+          ),
         ),
         SizedBox(
           height: 20,
@@ -90,7 +102,19 @@ class WelcomePage extends StatelessWidget {
             Text('Have an invite text?',
             style: TextStyle(
               color: Style.AccentBlue,
-            ))
+            ),
+            ),
+            SizedBox(
+              width: 5,
+            ),
+            Text(
+            'Sign in',style: TextStyle(
+              color: Style.AccentBlue,
+              fontWeight: FontWeight.bold,
+            )
+            ),
+            Icon(Icons.arrow_right_alt,
+            color: Style.AccentBlue,),
           ]
         )
       ],
