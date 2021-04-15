@@ -1,3 +1,4 @@
+import 'package:blackvector/pages/welcome/phone_numer.dart';
 import 'package:blackvector/widgets/round_button.dart';
 import 'package:flutter/material.dart';
 import 'package:blackvector/util/style.dart';
@@ -26,7 +27,7 @@ class WelcomePage extends StatelessWidget {
             child:buildContent(),
             
           ),
-          buildBottom(),
+          buildBottom(context),
 
           ],
         )
@@ -74,13 +75,19 @@ class WelcomePage extends StatelessWidget {
     );
   }
 
-  Widget buildBottom(){
+  Widget buildBottom(BuildContext context){
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         RoundButton(
           color: Style.AccentBlue,
-          onPressed:(){},
+          onPressed:(){
+            Navigator.push(context, MaterialPageRoute(builder: (context){
+              return PhoneNumberPage();
+            },
+            ),
+            );
+          },
           child: Container(
             child: Row(
               mainAxisSize: MainAxisSize.min,
