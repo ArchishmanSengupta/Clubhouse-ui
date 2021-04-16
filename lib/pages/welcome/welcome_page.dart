@@ -1,4 +1,5 @@
 import 'package:blackvector/pages/welcome/phone_numer.dart';
+import 'package:blackvector/util/history.dart';
 import 'package:blackvector/widgets/round_button.dart';
 import 'package:flutter/material.dart';
 import 'package:blackvector/util/style.dart';
@@ -82,11 +83,12 @@ class WelcomePage extends StatelessWidget {
         RoundButton(
           color: Style.AccentBlue,
           onPressed:(){
-            Navigator.push(context, MaterialPageRoute(builder: (context){
-              return PhoneNumberPage();
-            },
-            ),
-            );
+            History.pushPage(context, PhoneNumberPage());
+            // Navigator.push(context, MaterialPageRoute(builder: (context){
+            //   return PhoneNumberPage();
+            // },
+            // ),
+            // );
           },
           child: Container(
             child: Row(
