@@ -1,3 +1,5 @@
+import 'package:blackvector/util/style.dart';
+import 'package:blackvector/widgets/round_button.dart';
 import 'package:flutter/material.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 
@@ -26,10 +28,13 @@ Function onSignupButtonClick;
           
           child: Column(children: [
             buildTitle(),
+            
             SizedBox(
               height: 50,
             ),
             buildForm(),
+            Spacer(),
+            buildBottom(),
 
           ],),
         ),
@@ -52,7 +57,7 @@ Function onSignupButtonClick;
       child: Row(
         children: [
           CountryCodePicker(
-            initialSelection: 'KR',
+            initialSelection: 'भारत',
             showCountryOnly: false,
             alignLeft: false,
             padding: const EdgeInsets.all(8),
@@ -62,6 +67,25 @@ Function onSignupButtonClick;
           Expanded(
             key: _formkey,
             child: TextFormField(
+              onChanged: (value){
+                _formkey.currentState.validate();
+              },
+              validator: (value){
+                if(value.isEmpty)
+                {
+                  setState(() {
+                    onSignupButtonClick=null;
+                  });
+
+                  }
+                  else
+                  {
+                    setState(() {
+                      onSignupButtonClick = signUp;
+                    });
+                  }
+                  return null;
+              },
               controller: _PhoneNumberPageController,
               autocorrect: false,
               autofocus: false,
@@ -70,6 +94,18 @@ Function onSignupButtonClick;
                 hintStyle: TextStyle(fontSize: 20
                 ,
                 ),
+                
+                border:InputBorder.none,
+                focusedBorder: InputBorder.none,
+                errorBorder: InputBorder.none,
+                disabledBorder: InputBorder.none,
+              ),
+              keyboardType: TextInputType.numberWithOptions(signed: true,decimal: true,),
+              
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w400,
+                color: Colors.black,
               ),
             ),
             ),
@@ -77,5 +113,41 @@ Function onSignupButtonClick;
 
       ),
     );
+  }
+  Widget buildBottom(){
+    return Column(
+      children: [
+        Text('By entering your number, you\'re agreeing to out\nTerms or Services and Privacy Policy. Thanks!',
+        style: TextStyle(
+          color: Colors.grey,
+        ),
+        ),
+        SizedBox(
+          height:30
+        ),
+        RoundButton(
+          color: Style.AccentBlue,
+          disabledColor: Style.AccentBlue.withOpacity(0.3),
+          minimumWidth: 230,
+          onPressed: onSignupButtonClick,
+          child: Container(
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text('Next',style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                )),
+                Icon(Icons.arrow_right_alt,
+                color: Colors.white,)
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+  signUp(){
+
   }
 }
