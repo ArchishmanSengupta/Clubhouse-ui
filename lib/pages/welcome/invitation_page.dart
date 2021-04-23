@@ -18,8 +18,8 @@ class InvitationPage extends StatelessWidget {
             SizedBox(
               height: 50,
             ),
-           Expanded(child: buildContents(),)
-            // buildBottom(context),
+           Expanded(child: buildContents(),),
+            buildBottom(context),
           ],
         ),
       ),
@@ -35,19 +35,34 @@ class InvitationPage extends StatelessWidget {
   }
 
   Widget buildContents() {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          RoundImage(
+            path:'images/profile1.jpg',
+            width: 200,
+            height: 200,),
+          SizedBox(
+            height:10,
+          ),
+          Text('Sheldon Cooper',style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+
+        ],
+      ),
+    );
+  }
+
+  Widget buildBottom(BuildContext context){
     return Column(
       children: [
-        RoundImage(
-          path:'images/profile1.jpg',
-          width: 200,
-          height: 200,),
-        SizedBox(
-          height:10,
-        ),
-        Text('Sheldon Cooper',style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-
+        Text('Let\'s set up your profile?',
+        style: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.w500,
+        ),)
       ],
     );
+
   }
 }
