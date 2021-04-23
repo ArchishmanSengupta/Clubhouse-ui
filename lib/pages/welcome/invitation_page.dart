@@ -1,3 +1,5 @@
+import 'package:blackvector/util/style.dart';
+import 'package:blackvector/widgets/round_button.dart';
 import 'package:blackvector/widgets/round_image.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +20,7 @@ class InvitationPage extends StatelessWidget {
             SizedBox(
               height: 50,
             ),
-           Expanded(child: buildContents(),),
+          Expanded(child: buildContents(),),
             buildBottom(context),
           ],
         ),
@@ -60,7 +62,25 @@ class InvitationPage extends StatelessWidget {
         style: TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.w500,
-        ),)
+        ),
+        
+        ),
+        SizedBox(height: 30,),
+        RoundButton(
+          onPressed: (){},
+          minimumWidth: 230,
+          color: Style.AccentBlue,
+          text: '🐋 Import from whale',
+          fontSize: 20,
+          ),
+          SizedBox(height:20),
+          GestureDetector(
+            onTap: (){
+              
+            },
+            child: Text('Enter my info manually',style: TextStyle(
+              color: Style.AccentBlue),),
+          )
       ],
     );
 
