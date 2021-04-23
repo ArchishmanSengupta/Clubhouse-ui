@@ -68,7 +68,7 @@ class WelcomePage extends StatelessWidget {
         SizedBox(
           height: 40,
         ),
-        Text('🏠Archie, Harry & the BlackVector team ', style:TextStyle(
+        Text('🏠Archie, Sheldon & the BlackVector team ', style:TextStyle(
               fontSize:15,
         ))
 
