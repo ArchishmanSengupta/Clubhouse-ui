@@ -1,3 +1,5 @@
+import 'package:blackvector/pages/welcome/full_name_page.dart';
+import 'package:blackvector/util/history.dart';
 import 'package:blackvector/util/style.dart';
 import 'package:blackvector/widgets/round_button.dart';
 import 'package:blackvector/widgets/round_image.dart';
@@ -76,6 +78,7 @@ class InvitationPage extends StatelessWidget {
           SizedBox(height:20),
           GestureDetector(
             onTap: (){
+              History.pushPage(context,FullNamePage());
               
             },
             child: Text('Enter my info manually',style: TextStyle(
