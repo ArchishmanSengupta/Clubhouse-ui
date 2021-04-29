@@ -1,3 +1,6 @@
+import 'package:blackvector/pages/welcome/username_page.dart';
+import 'package:blackvector/util/history.dart';
+import 'package:blackvector/util/style.dart';
 import 'package:blackvector/widgets/round_button.dart';
 import 'package:flutter/material.dart';
 
@@ -31,9 +34,12 @@ class _FullNamePageState extends State<FullNamePage> {
             height:50,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20),
             child: buildForm(),
           ),
+          Spacer(),
+          buildBottom(),
         ],)
       )
 
@@ -61,9 +67,26 @@ class _FullNamePageState extends State<FullNamePage> {
             child: Form(
                   key: _firstNameFormKey,
                   child: TextFormField(
+                    textAlign: TextAlign.center,
                     onChanged: (value) {
                       _firstNameFormKey.currentState.validate();
                     },
+                    validator: (value){
+                      if(value.isNotEmpty){
+                        if(_lastNameController.text.isNotEmpty){
+                          setState(() {
+                          onNextButtonClick=next;
+                        });
+                        }
+                      }else{
+                        setState(() {
+                          onNextButtonClick=null;
+                        });
+                        
+                      }
+                      return null;
+                    },
+                    
                   
                     controller: _firstNameController,
                     autocorrect: false,
@@ -99,8 +122,24 @@ class _FullNamePageState extends State<FullNamePage> {
             child: Form(
                   key: _lastNameFormKey,
                   child: TextFormField(
+                    textAlign: TextAlign.center,
                     onChanged: (value) {
                       _lastNameFormKey.currentState.validate();
+                    },
+                    validator: (value){
+                      if(value.isNotEmpty){
+                        if(_firstNameController.text.isNotEmpty){
+                          setState(() {
+                          onNextButtonClick=next;
+                        });
+                        }
+                      }else{
+                        setState(() {
+                          onNextButtonClick=null;
+                        });
+                        
+                      }
+                      return null;
                     },
                   
                     controller: _lastNameController,
@@ -134,10 +173,32 @@ class _FullNamePageState extends State<FullNamePage> {
 
   Widget buildBottom(){
     return RoundButton(
-      child: Container(
-        
-      ),
-      
+          color: Style.AccentBlue,
+          minimumWidth: 230,
+          disabledColor: Style.AccentBlue.withOpacity(0.3),
+          onPressed: onNextButtonClick,
+          child: Container(
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'Next',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
+                ),
+                Icon(
+                  Icons.arrow_right_alt,
+                  color: Colors.white,
+                ),
+              ],
+            ),
+          ),
     );
+  }
+  next(){
+    History.pushPage(context,UsernamePage());
+
   }
 }
