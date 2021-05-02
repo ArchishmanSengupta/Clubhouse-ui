@@ -1,3 +1,4 @@
+import 'package:blackvector/pages/welcome/pick_photo_page.dart';
 import 'package:blackvector/pages/welcome/username_page.dart';
 import 'package:blackvector/util/history.dart';
 import 'package:blackvector/util/style.dart';
@@ -198,7 +199,7 @@ class _FullNamePageState extends State<FullNamePage> {
     );
   }
   next(){
-    History.pushPage(context,UsernamePage());
+    History.pushPage(context,PickPhotoPage());
 
   }
 }
