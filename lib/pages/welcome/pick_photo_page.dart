@@ -3,7 +3,7 @@ import 'package:blackvector/util/style.dart';
 import 'package:blackvector/widgets/round_button.dart';
 import 'package:flutter/material.dart';
 
-import 'home/home_page.dart';
+import 'home/widgets/home_page.dart';
 
 class PickPhotoPage extends StatelessWidget {
   @override
