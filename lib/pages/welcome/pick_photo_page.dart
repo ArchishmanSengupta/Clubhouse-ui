@@ -1,13 +1,16 @@
+import 'package:blackvector/util/history.dart';
 import 'package:blackvector/util/style.dart';
 import 'package:blackvector/widgets/round_button.dart';
 import 'package:flutter/material.dart';
+
+import 'home/home_page.dart';
 
 class PickPhotoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [buildActionButton(),]
+        actions: [buildActionButton(context),]
       ),
       body: Container(
         alignment: Alignment.center,
@@ -18,9 +21,11 @@ class PickPhotoPage extends StatelessWidget {
         child: Column(
           children: [
             buildTitle(),
-            Spacer(),
+            Spacer(
+              flex: 1,
+            ),
             buildContents(),
-            Spacer(),
+            Spacer(flex:3,),
             buildBottom(),
 
           ],
@@ -29,8 +34,21 @@ class PickPhotoPage extends StatelessWidget {
     );
   }
 
-  Widget buildActionButton(){
+  Widget buildActionButton(BuildContext context){
     return Container(
+      alignment: Alignment.center,
+      padding: const EdgeInsets.symmetric(
+        horizontal:20,
+      ),
+      child: GestureDetector(
+        onTap: (){
+          History.pushPageReplacement(context, HomePage());
+        },
+        child: Text('Skip',style:TextStyle(
+          color: Style.DarkBrown,
+          fontWeight:FontWeight.bold,
+        ),),
+      ),
 
     );
 

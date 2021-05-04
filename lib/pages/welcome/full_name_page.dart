@@ -199,7 +199,7 @@ class _FullNamePageState extends State<FullNamePage> {
     );
   }
   next(){
-    History.pushPage(context,PickPhotoPage());
+    History.pushPage(context,UsernamePage());
 
   }
 }
