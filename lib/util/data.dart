@@ -37,8 +37,8 @@ List userData = List.generate(
     'name': names[index],
     'username': '@${names[index].toString().split(' ')[0].toLowerCase()}',
     'profileImage': 'assets/images/cat${index % 10 + 1}.jpg',
-    'followers': '1k',
-    'following': '1',
+    'followers': '100k',
+    'following': '4',
     'lastAccessTime': '${index + 10}m',
     'isNewUser': random.nextBool(),
   },
@@ -46,11 +46,11 @@ List userData = List.generate(
 
 // MyProfile
 dynamic profileData = {
-  'name': 'Golden Retriever',
-  'username': '@dog',
-  'profileImage': 'images/1.jpg',
-  'followers': '1k',
-  'following': '1',
+  'name': ' Sheldon Cooper',
+  'username': '@bazinga',
+  'profileImage': 'images/profile1.jpg',
+  'followers': '100k',
+  'following': '4',
   'lastAccessTime': '0m',
   'isNewUser': random.nextBool(),
 };
