@@ -1,4 +1,5 @@
 import 'package:blackvector/models/user.dart';
+import 'package:blackvector/util/data.dart';
 import 'package:blackvector/widgets/round_image.dart';
 import 'package:flutter/material.dart';
 
@@ -19,16 +20,21 @@ class ProfilePage extends StatelessWidget {
           IconButton(icon: Icon(Icons.settings_rounded),onPressed: (){},)
         ],
       ),
-      body: Column(
-        children:[
-          buildProfile(),
-
-        ]
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+          children:[
+            buildProfile(),
+            SizedBox(height: 20,),
+            builderInviter(),
+          ]
+        ),
       )
     );
   }
 
   Widget buildProfile(){
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -66,10 +72,9 @@ class ProfilePage extends StatelessWidget {
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 )
-                
               ),
               TextSpan(
-                text: ' followers',
+                text: ' followers  ',
               )
             ],
             style: TextStyle(color: Colors.black,)
@@ -86,6 +91,7 @@ class ProfilePage extends StatelessWidget {
                 )
                 
               ),
+
               TextSpan(
                 text: ' following',
               )
@@ -94,8 +100,44 @@ class ProfilePage extends StatelessWidget {
           ),
           ),
           ],
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20,),
+          child: Text(dummyText,style: TextStyle(
+            fontSize: 20,
+          )),
         )
       ],
+    );
+  }
+
+  Widget builderInviter(){
+    return Row(
+      children: [
+        RoundImage(path: 'images/profile.jpg',
+        ),
+        SizedBox(width: 10,),
+        Column(
+          children: [
+            Text('Joined May 2021'),
+            SizedBox(height: 3,),
+            RichText(text: TextSpan(
+            children: <TextSpan>[
+              TextSpan(
+                text: 'Nominated By',
+              ),
+              TextSpan(
+                text: ' Archie',
+              )
+            ],
+            style: TextStyle(color: Colors.black,)
+          ),
+          ),
+
+          ],
+        )
+      ],
+
     );
   }
 }

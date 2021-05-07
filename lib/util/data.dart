@@ -5,7 +5,7 @@ import 'package:blackvector/models/user.dart';
 Random random = Random();
 
 String dummyText =
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit? ❤🏠🏠';
+    'I am not mad. My mother had me tested ❤🏠🏠';
 
 // User
 List names = [
