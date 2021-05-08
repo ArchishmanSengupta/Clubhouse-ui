@@ -1,3 +1,4 @@
+import 'package:blackvector/pages/welcome/lobby/widgets/schedule_card.dart';
 import 'package:flutter/material.dart';
 
 class LobbyPage extends StatelessWidget {
@@ -5,9 +6,15 @@ class LobbyPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Text('Lobby Page'),
+        buildScheduleCard(),
       ],
       
+    );
+  }
+
+  Widget buildScheduleCard(){
+    return Container(
+      child: ScheduleCard(),
     );
   }
 }
