@@ -59,7 +59,7 @@ dynamic profileData = {
 List roomData = List.generate(
   10,
   (index) => {
-    'title': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit? ❤🏠🏠',
+    'title': 'Sheldon hasn\'t always been the merriest fellow when it comes to having holiday spirit.  ❤🏠🏠',
     "users": List.generate(20, (index) => User.fromJson(userData[index]))
       ..shuffle(),
     'speakerCount': 4,
