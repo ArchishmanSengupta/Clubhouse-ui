@@ -17,6 +17,11 @@ class RoomCard extends StatelessWidget {
 
       decoration: BoxDecoration(color: Colors.white,
       borderRadius: BorderRadius.circular(20),
+      boxShadow: [
+        BoxShadow(color: Colors.grey.withOpacity(0.5),
+        offset: Offset(0,1),
+      ),
+      ],
       ),
 
       child: Column(
