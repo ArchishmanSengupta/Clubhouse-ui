@@ -1,4 +1,5 @@
 import 'package:blackvector/models/room.dart';
+import 'package:blackvector/widgets/round_image.dart';
 import 'package:flutter/material.dart';
 
 class RoomCard extends StatelessWidget {
@@ -30,6 +31,19 @@ class RoomCard extends StatelessWidget {
           SizedBox(height: 15,),
           Row(
             children: [
+              buildProfileImages(),
+              SizedBox(
+                width: 10,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  buildUserList(),
+                  SizedBox(height: 5,),
+                  buildRoomInfo(),
+
+              ],)
+              
 
             ],
           )
@@ -39,5 +53,75 @@ class RoomCard extends StatelessWidget {
       
     );
   }
-  
+  Widget buildProfileImages(){
+    return Stack(
+      children: [
+        RoundImage(
+          margin: const EdgeInsets.only(top: 15, left: 25),
+          path: room.users[1].profileImage),
+          RoundImage(
+          path: room.users[0].profileImage),
+      ],
+    );
+    
+  }
+  Widget buildUserList(){
+    var len =room.users.length >4?4: room.users.length;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        for( var i=0;i<len;i++)
+        Container(
+          child: Row(
+            children: [
+            Text(
+              room.users[i].name,
+              style: TextStyle(
+              fontSize: 10,
+              fontWeight: FontWeight.w500,
+            ),
+            ),
+            SizedBox(
+              width: 5,
+            ),
+            Icon(Icons.chat, color: Colors.grey, size:14)
+          ],)
+        )
+      ],
+    );
+  }
+  Widget buildRoomInfo(){
+    return Row(
+      children: [
+        Text('${room.users.length}',
+        style: TextStyle(
+          color: Colors.grey,
+        ),
+        ),
+        Icon(
+          Icons.supervisor_account,
+          color: Colors.grey,
+          size: 14,
+        ),
+        Text(' / ',
+        style: TextStyle(
+          color: Colors.grey,
+          fontSize: 10,
+        ),
+        ),
+        Text('${room.speakerCount}',
+        style: TextStyle(
+          color: Colors.grey,
+        ),
+        ),
+        Icon(
+          Icons.chat_bubble_outline_rounded,
+          color: Colors.grey,
+          size: 14,
+        ),
+      ],
+    );
+
+  }
 }
