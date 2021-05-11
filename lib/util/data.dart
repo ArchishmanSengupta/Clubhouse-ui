@@ -9,11 +9,11 @@ String dummyText =
 
 // User
 List names = [
-  'American Bobtail',
-  'British Shorthair',
-  'Cornish Rex',
-  'Egyptian Mau',
-  'Devon Rex',
+  'Leas Lamaarr',
+  'Carlisle Forrester',
+  'Shanni Suissa',
+  'Ericka Simone',
+  'Mecyver',
   'Exotic Shorthair',
   'Japanese Bobtail',
   'Maine Coon',
@@ -36,7 +36,7 @@ List userData = List.generate(
   (index) => {
     'name': names[index],
     'username': '@${names[index].toString().split(' ')[0].toLowerCase()}',
-    'profileImage': 'assets/images/cat${index % 10 + 1}.jpg',
+    'profileImage': 'images/ran${index % 10 + 1}.png',
     'followers': '100k',
     'following': '4',
     'lastAccessTime': '${index + 10}m',
@@ -59,11 +59,16 @@ dynamic profileData = {
 List roomData = List.generate(
   10,
   (index) => {
-    'title': 'Sheldon hasn\'t always been the merriest fellow when it comes to having holiday spirit.  ❤🏠🏠',
+    'title': 'AMA Software Engineering  🖥️🧑‍🚀',
     "users": List.generate(20, (index) => User.fromJson(userData[index]))
       ..shuffle(),
-    'speakerCount': 4,
+    'speakerCount': 5,
+    //'title': 'StartupTalks  🧑‍🚀',
+    // "users": List.generate(20, (index) => User.fromJson(userData[index]))
+    //   ..shuffle(),
+    // 'speakerCount': 5,
   },
+  
 );
 
 List<Room> rooms = List.generate(
@@ -73,17 +78,17 @@ List<Room> rooms = List.generate(
 
 List lobbyBottomSheets = [
   {
-    'image': 'assets/images/open.png',
+    'image': 'images/open.png',
     'text': 'Open',
     'selectedMessage': 'Start a room open to everyone',
   },
   {
-    'image': 'assets/images/social.png',
+    'image': 'images/social.png',
     'text': 'Social',
     'selectedMessage': 'Start a room with people I follow',
   },
   {
-    'image': 'assets/images/closed.png',
+    'image': 'images/closed.png',
     'text': 'Closed',
     'selectedMessage': 'Start a room for people I choose',
   },

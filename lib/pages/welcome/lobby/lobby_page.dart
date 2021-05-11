@@ -1,4 +1,5 @@
 import 'package:blackvector/models/room.dart';
+import 'package:blackvector/pages/welcome/lobby/widgets/lobby_bottom_sheet.dart';
 import 'package:blackvector/pages/welcome/lobby/widgets/room_card.dart';
 import 'package:blackvector/pages/welcome/lobby/widgets/schedule_card.dart';
 import 'package:blackvector/util/data.dart';
@@ -73,7 +74,7 @@ class _LobbyPageState extends State<LobbyPage> {
   Widget buildRoomCard(Room room){
     return Container(
       margin: const EdgeInsets.symmetric(
-        vertical:15,
+        vertical: 12,
       ),
       child: RoomCard(
         room: room,
@@ -99,11 +100,20 @@ class _LobbyPageState extends State<LobbyPage> {
       return Container(
         margin: const EdgeInsets.only(bottom: 20,),
         child: RoundButton(
-          onPressed: (){},
+          onPressed: (){
+            showBottomSheet();
+            },
           color: Style.AccentGreen,
-          text: ('+ Start a room')
+          text: '+ Start a room',
           
         )
       );
+    }
+    showBottomSheet(){
+      showModalBottomSheet(context: context, builder: (context){
+        return LobbyBottomSheet();
+      }
+      );
+
     }
 }

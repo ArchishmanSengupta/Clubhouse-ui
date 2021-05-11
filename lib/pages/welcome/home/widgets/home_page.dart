@@ -25,7 +25,6 @@ class HomePage extends StatelessWidget {
         children:[
           LobbyPage(),
           FollowersPage(),
-
         ],
       ),
       
