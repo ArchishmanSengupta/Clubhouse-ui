@@ -110,8 +110,23 @@ class _LobbyPageState extends State<LobbyPage> {
       );
     }
     showBottomSheet(){
-      showModalBottomSheet(context: context, builder: (context){
-        return LobbyBottomSheet();
+      showModalBottomSheet(
+        context: context,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(15),
+            topRight: Radius.circular(15),
+            ),
+            ),
+        builder: (context){
+        return Wrap(
+          children: [
+          LobbyBottomSheet(
+            onButtonTap: (){
+              Navigator.pop(context);
+            },
+          )
+        ],);
       }
       );
 

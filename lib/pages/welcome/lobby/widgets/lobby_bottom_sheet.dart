@@ -1,7 +1,24 @@
+import 'package:blackvector/util/data.dart';
 import 'package:blackvector/util/style.dart';
+import 'package:blackvector/widgets/round_button.dart';
+import 'package:blackvector/widgets/round_image.dart';
 import 'package:flutter/material.dart';
 
-class LobbyBottomSheet extends StatelessWidget {
+class LobbyBottomSheet extends StatefulWidget {
+  final Function onButtonTap;
+
+  const LobbyBottomSheet({
+    Key key, 
+    this.onButtonTap
+    }
+    ) : super(key: key);
+  @override
+  _LobbyBottomSheetState createState() => _LobbyBottomSheetState();
+}
+
+class _LobbyBottomSheetState extends State<LobbyBottomSheet> {
+
+  var selectedButtonIndex=0;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,6 +47,79 @@ class LobbyBottomSheet extends StatelessWidget {
           ),
           ),
         ),
+
+
+        SizedBox(
+          height: 20,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            for(var i=0,len=3;i<len;i++)
+            InkWell(
+              borderRadius: BorderRadius.circular(15),
+              onTap: (){
+                setState(() {
+                  
+                  selectedButtonIndex=i;
+                });
+              },
+              child: Ink(
+                padding: const EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 5,
+              ),
+                
+                decoration: BoxDecoration(
+                color: i==selectedButtonIndex ? Style.SelectedItemGrey:
+                Colors.transparent,
+                borderRadius: BorderRadius.circular(15),
+                border: Border.all(
+                  color: i==selectedButtonIndex ? Style.SelectedItemBorderGrey
+                  : Colors.transparent,)
+
+              ),
+                child: Column(
+                      children: [
+                      Container(
+                        padding: const EdgeInsets.only(bottom: 5,),
+                        child: RoundImage(
+                              width: 80,
+                              height: 80,
+                              borderRadius: 20,
+                              path: lobbyBottomSheets[i]['image'],
+                              
+                            ),
+                      ),
+                          Text(lobbyBottomSheets[i]['text'],
+                          style:TextStyle(fontWeight: FontWeight.bold, ),
+                          ),
+                      ],
+                      
+                    ),
+              ),
+            ),
+          ],
+        ),
+        Divider(
+          thickness: 1,
+          height: 60,
+          indent: 20,
+          endIndent: 20,
+
+
+        ),
+        Text(lobbyBottomSheets[selectedButtonIndex]['selectedMessage'],
+        style:TextStyle(fontWeight: FontWeight.bold, fontSize:18 ),
+        ),
+        SizedBox(
+          height: 20,
+        ),
+        RoundButton(
+          color: Style.AccentGreen,
+          onPressed: widget.onButtonTap,
+          text: '🎉Let\'s go'
+        )
       ],
       ),
       
