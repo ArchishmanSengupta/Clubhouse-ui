@@ -1,5 +1,7 @@
+import 'package:blackvector/pages/welcome/home/widgets/profile_page.dart';
 import 'package:blackvector/pages/welcome/lobby/widgets/follow_item.dart';
 import 'package:blackvector/util/data.dart';
+import 'package:blackvector/util/history.dart';
 import 'package:blackvector/util/style.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +9,11 @@ class FollowersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      padding: const EdgeInsets.only(
+        left: 20,
+        right: 20,
+        top: 20,
+      ),
       child: Column(
         children: [
           buildAvailableChatTitle(),
@@ -43,10 +50,16 @@ class FollowersPage extends StatelessWidget {
       shrinkWrap: true,
       physics: ScrollPhysics(),
       itemBuilder:(lc,index){
-      return FollowItem(
-        user: users[index],
-        onProfileTap: (){},
-        onRoomButtonTap: (){},
+      return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: FollowItem(
+          user: users[index],
+          onProfileTap: (){
+            History.pushPage(context, ProfilePage(
+              profile: users[index],),);
+          },
+          onRoomButtonTap: (){},
+        ),
       );
     },
     itemCount: users.length,
