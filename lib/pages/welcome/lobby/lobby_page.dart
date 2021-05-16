@@ -2,6 +2,7 @@ import 'package:blackvector/models/room.dart';
 import 'package:blackvector/pages/welcome/lobby/widgets/lobby_bottom_sheet.dart';
 import 'package:blackvector/pages/welcome/lobby/widgets/room_card.dart';
 import 'package:blackvector/pages/welcome/lobby/widgets/schedule_card.dart';
+import 'package:blackvector/pages/welcome/room/romm_page.dart';
 import 'package:blackvector/util/data.dart';
 import 'package:blackvector/util/style.dart';
 import 'package:blackvector/widgets/round_button.dart';
@@ -72,13 +73,18 @@ class _LobbyPageState extends State<LobbyPage> {
   }
 
   Widget buildRoomCard(Room room){
-    return Container(
-      margin: const EdgeInsets.symmetric(
-        vertical: 12,
-      ),
-      child: RoomCard(
-        room: room,
+    return GestureDetector(
+      onTap: (){
+        enterRoom(room);
+      },
+      child: Container(
+        margin: const EdgeInsets.symmetric(
+          vertical: 12,
         ),
+        child: RoomCard(
+          room: room,
+          ),
+      ),
     );
   }
   Widget buildGradientContainer(){
@@ -108,6 +114,16 @@ class _LobbyPageState extends State<LobbyPage> {
           
         )
       );
+    }
+
+    enterRoom(Room room){
+      showModalBottomSheet(
+        isScrollControlled: true,
+        context: context, builder:(rc){
+        return RoomPage(
+          room: room,
+        );
+      });
     }
     showBottomSheet(){
       showModalBottomSheet(
