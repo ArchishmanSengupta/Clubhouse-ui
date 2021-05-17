@@ -52,7 +52,7 @@ class RoundButton extends StatelessWidget {
           ),
         ),
         padding: MaterialStateProperty.all<EdgeInsets>(padding),
-        elevation: MaterialStateProperty.all<double>(0.5),
+        elevation: MaterialStateProperty.all<double>(1.5),
       ),
       onPressed: onPressed,
       child: text.isNotEmpty ? Text(

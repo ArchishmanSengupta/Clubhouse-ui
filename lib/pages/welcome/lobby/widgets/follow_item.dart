@@ -56,14 +56,16 @@ class FollowItem extends StatelessWidget {
             color: Style.LightGreen,
             child: Row(
               children: [
-                Text('+ Room', style:TextStyle(
+                Text('+ Room ', style:TextStyle(
                   color: Style.AccentGreen,
-                ),),
-                Icon(Icons.lock, color: Style.AccentGreen, size: 15)
+                  height: 1.1,
+                ),
+                ),
+                Icon(Icons.lock, color: Style.AccentGreen, size: 10)
               ],
             ),
           ),
-        )
+        ),
       ],
       
     );

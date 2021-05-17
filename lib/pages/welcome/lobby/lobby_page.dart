@@ -44,7 +44,7 @@ class _LobbyPageState extends State<LobbyPage> {
               left: 20,
               right:20,
             ),
-            itemBuilder: (tc,index){
+            itemBuilder: (lc,index){
               if(index==0){
                 return buildScheduleCard();
               }
@@ -119,7 +119,8 @@ class _LobbyPageState extends State<LobbyPage> {
     enterRoom(Room room){
       showModalBottomSheet(
         isScrollControlled: true,
-        context: context, builder:(rc){
+        context: context, 
+        builder:(rc){
         return RoomPage(
           room: room,
         );
@@ -140,9 +141,17 @@ class _LobbyPageState extends State<LobbyPage> {
           LobbyBottomSheet(
             onButtonTap: (){
               Navigator.pop(context);
+              enterRoom(
+                Room(
+                  title: '${myProfile.name}\'s Room', 
+                  users: [myProfile],
+                  speakerCount: 1,
+                )
+              );
             },
           )
-        ],);
+        ],
+        );
       }
       );
     }
