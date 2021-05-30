@@ -31,6 +31,16 @@ class RoomPage extends StatelessWidget {
             ),
             ),
             Spacer(),
+
+
+
+            // RoundImage(
+            //   path:  myProfile.profileImage,
+            //   width:40,
+            //   height: 40,
+
+
+            // ),
         //     GestureDetector(
         //       onTap:(){
         //       History.pushPage(context, 
@@ -59,9 +69,44 @@ class RoomPage extends StatelessWidget {
           )
         ),
         child: Stack(
+          children: [
+            SingleChildScrollView(
+              padding: const EdgeInsets.only(
+                bottom: 80,
+                top: 20,
+              ),
+              child: Column(
+                children: [
+                  buildTitle(room.title),
+                ],
+              )),
+          ],
 
+        ),
+      )
+    );
+  }
+
+  Widget buildTitle(String title) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children:[
+        Flexible(
+          child: Text(title, style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+
+          )),
+        ),
+        Container(
+          child: IconButton(
+            onPressed: (){},
+            iconSize: 20,
+            icon: Icon(Icons.more_horiz),
+          ),
         )
-      ,)
+      ]
     );
   }
 }
