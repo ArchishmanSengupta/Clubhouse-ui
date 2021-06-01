@@ -1,5 +1,6 @@
 import 'package:blackvector/models/room.dart';
 import 'package:blackvector/pages/welcome/home/widgets/profile_page.dart';
+import 'package:blackvector/pages/welcome/room/widgets/room_profile.dart';
 import 'package:blackvector/util/history.dart';
 import 'package:blackvector/widgets/round_image.dart';
 import 'package:flutter/material.dart';
@@ -78,6 +79,7 @@ class RoomPage extends StatelessWidget {
               child: Column(
                 children: [
                   buildTitle(room.title),
+                  buildSpeaker(),
                 ],
               )),
           ],
@@ -107,6 +109,25 @@ class RoomPage extends StatelessWidget {
           ),
         )
       ]
+    );
+  }
+
+  Widget buildSpeaker(){
+
+    return GridView.builder(
+      shrinkWrap: true,
+      physics: ScrollPhysics(),
+       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount:3,
+        mainAxisExtent: 150,
+      ),
+      itemCount: room.users.length,
+      itemBuilder: (gc,index){
+        return RoomProfile(
+          user: room.users[index],
+          size: 80,
+        );
+      },
     );
   }
 }
